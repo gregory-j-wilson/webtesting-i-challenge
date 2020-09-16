@@ -125,3 +125,22 @@ describe('enhancer functions', () => {
     })
 
 })
+
+
+describe('enhancement addition to name is present when enhancement is greater than 0', () => {
+
+    it('puts enhancement addition in name when enhancement is greater than 0', function () {
+
+        const item = {
+            name: 'Bow and arrow',
+            durability: 90,
+            enhancement: 14
+        }
+
+        const result = enhancer.get(item)
+
+        expect(result.name).toBe('[+14] Bow and arrow')
+
+    })
+
+})
