@@ -5,18 +5,70 @@ module.exports = {
   get,
 };
 
-function success(item) {
-  return { ...item };
-}
-
-function fail(item) {
-  return { ...item };
-}
 
 function repair(item) {
+
+  item = {
+    ...item,
+    durability: 100,
+    
+  }
+
   return { ...item };
 }
 
+
+
+function success(item) {
+
+ 
+  item = {
+    ...item,
+    enhancement: item.enhancement + 1 
+  }
+
+  if (item.enhancement > 20 ) {
+    item.enhancement = 20
+  }
+
+
+  return { ...item };
+}
+
+
+function fail(item) {
+
+  item = {
+    ...item,
+  }
+  
+  item.enhancement < 15 ? item.durability -= 5 : item.durability -= 10 
+
+  if (item.enhancement > 16) {
+    item.enhancement -= 1
+  }
+
+  // if (item.enhancement < 15) {
+  //   item.durability -= 5
+  // } else if (item.enhancement > 15) {
+  //   item.durability -= 10
+  // }
+
+
+  return { ...item };
+}
+
+
 function get(item) {
+
+  item = {
+    ...item,
+    name: item.name
+  }
+
+  if (item.enhancement > 0) {
+    item.name = `[+${item.enhancement}] ${item.name}`
+  }
+
   return { ...item };
 }
